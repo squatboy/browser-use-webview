@@ -3,9 +3,12 @@ from typing import List, Tuple, Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from dotenv import load_dotenv
+from pathlib import Path
 
 # 셋업
-load_dotenv()
+# orchestrator/.env 파일 명시적으로 로드
+env_path = Path(__file__).parent / ".env"
+load_dotenv(dotenv_path=env_path)
 PUBLIC_HOST = os.getenv("PUBLIC_HOST")
 
 if not PUBLIC_HOST:
